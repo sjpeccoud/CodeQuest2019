@@ -1,3 +1,5 @@
+package CodeQuest2019;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
