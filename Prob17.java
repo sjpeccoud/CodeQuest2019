@@ -53,24 +53,6 @@ public class Prob17
             }
 
 
-
-            //prints out the board
-            for (int pR = 1; pR < 11; pR++)
-            {
-                for (int pC = 1; pC < 11; pC++)
-                {
-                    Cell cell = board[pR][pC];
-                    if (cell.getLife())
-                        System.out.print(1);
-                    else
-                        System.out.print(0);
-                }
-                System.out.println();
-            }
-            System.out.println();
-
-
-
             //System.out.println("Test before gen Loop");
             //Repeat for number of generations
             for (int g = 0; g < numOfGenerations; g++)
@@ -108,9 +90,14 @@ public class Prob17
                         if (board[x + 1][y].getLife())
                             cell.setAdjacentLife(cell.getAdjacentLife() + 1);
 
+                        /*
 
-                            //System.out.println("Cell at Row: " + (x - 1) + " Colum: " + (y - 1) + " adjacent life = " + cell.getAdjacentLife());
+                        if(cell.getAdjacentLife() > 1)
+                        {
+                            System.out.println("Cell at Row: " + (x - 1) + " Colum: " + (y - 1) + " adjacent life = " + cell.getAdjacentLife());
+                        }
 
+                         */
                     }
                 }
 
@@ -132,7 +119,8 @@ public class Prob17
                             {
                                 cell.setLife(false);
                             }
-                        } else
+                        }
+                        else
                         {
                             if (cell.getAdjacentLife() == 3)
                             {
@@ -140,9 +128,12 @@ public class Prob17
                             }
                         }
 
+                        cell.setAdjacentLife(0);
+
                     }
                 }
 
+                /*
                 System.out.println("Board at gen " + g);
                 //prints out the board
                 for (int pR = 1; pR < 11; pR++)
@@ -158,7 +149,10 @@ public class Prob17
                     System.out.println();
                 }
                 System.out.println();
+
+                 */
             }
+
 
             //prints out the board
             for (int pR = 1; pR < 11; pR++)
@@ -175,6 +169,8 @@ public class Prob17
                 }
                 System.out.println();
             }
+
+
 
 
         }
