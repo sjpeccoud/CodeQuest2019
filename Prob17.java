@@ -180,46 +180,36 @@ public class Prob17
 
 class Cell
 {
-    private int x, y;
-    private int adjacentLife;
 
-    private boolean life;
+private int adjacentLife;
 
-    public Cell(int x, int y)
-    {
+private boolean life;
+
+public Cell(int x, int y)
+        {
         this.life = false;
-        this.x = x;
-        this.y = y;
+
         adjacentLife = 0;
-    }
+        }
 
-    public boolean getLife()
-    {
+public boolean getLife()
+        {
         return life;
-    }
+        }
 
-    public int getX()
-    {
-        return x;
-    }
 
-    public int getY()
-    {
-        return y;
-    }
-
-    public int getAdjacentLife()
-    {
+public int getAdjacentLife()
+        {
         return adjacentLife;
-    }
+        }
 
-    public void setAdjacentLife(int adjacentLife)
-    {
+public void setAdjacentLife(int adjacentLife)
+        {
         this.adjacentLife = adjacentLife;
-    }
+        }
 
-    public void setLife(boolean life)
-    {
+public void setLife(boolean life)
+        {
         this.life = life;
-    }
-}
+        }
+        }
