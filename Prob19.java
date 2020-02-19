@@ -24,17 +24,28 @@ public class Prob19
             }
 
             // Proccesing the arraylist
-            for(int a = 0; a < addresses.size(); a ++)
+            System.out.println(addresses.size());
+            System.out.println(addresses);
+            for(int a = 0; a < addresses.size(); a++)
             {
                 String newAddress = "";
+
                 for(int d = 0; d < addresses.get(a).length(); d++)
                 {
                     if(addresses.get(a).charAt(d) != '.')
                     {
-                        newAddress += (addresses.get(a).charAt(d);
+                        newAddress += (addresses.get(a).charAt(d));
                     }
                 }
+
+                addresses.add(0, newAddress);
+                addresses.remove(addresses.size()-1);
+               // addresses.add(0, newAddress);
+
+                System.out.println("Went through loop");
             }
+
+            System.out.println(addresses);
 
             //Finds the lowest common bit
             int lowestCommonBitCount = 0;
@@ -43,7 +54,7 @@ public class Prob19
                 int lastLow = 10000000;
                 for(int q = 0; q < addresses.size() - 1; q++)
                 {
-                    String bin1 = Integer.toBinaryString(Integer.parseInt(addresses.get(q).substring(packetNum * 8, (packetNum + 1)*8)));
+                    String bin1 = Integer.toBinaryString(Integer.parseInt(addresses.get(q).substring(packetNum * , (packetNum + 1)*8)));
                     String bin2 = Integer.toBinaryString(Integer.parseInt(addresses.get(q+1).substring(packetNum * 8, (packetNum + 1) * 8)));
 
                     for(int l = 0; l < bin1.length(); l++)
