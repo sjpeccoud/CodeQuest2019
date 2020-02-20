@@ -9,13 +9,13 @@ public class Prob21
 {
     public static void main(String[] args)
     {
+        boolean spyDetected = false;
         DecimalFormat df = new DecimalFormat("#");
         Scanner s = new Scanner(System.in);
         int numInputs = Integer.parseInt(s.nextLine());
         for (int q = 0; q < numInputs; q++)
         {
             String[] spyData = s.nextLine().split(" ");
-            String[] wallData = s.nextLine().split(" ");
 
             ArrayList<Double> intersectX = new ArrayList<Double>();
             ArrayList<Double> intersectY = new ArrayList<Double>();
@@ -33,15 +33,33 @@ public class Prob21
             for(int w = 0; w < numWalls; w++)
             {
                 String[] ln = s.nextLine().split(" ");
+
                 walls.add(new Wall(Integer.parseInt(ln[0]), Integer.parseInt(ln[1]),
                         Integer.parseInt(ln[2]), Integer.parseInt(ln[3])));
 
                 intersectX.add((c - walls.get(w).c) / (walls.get(w).slope - slope));
                 intersectY.add(slope * intersectX.get(w) + c);
+
+                if(intersectX.get(w) > walls.get(w).getStartX() &&  intersectX.get(w) > walls.get(w).getEndX())
+                {
+                    if(intersectY.get(w) > Math.min(walls.get(w).getStartY(), walls.get(w).getEndY()) &&
+                            intersectY.get(w) < Math.max(walls.get(w).getStartY(), walls.get(w).getEndY()))
+                    {
+                        spyDetected = true;
+                        break;
+                    }
+                }
+
             }
 
-
-
+            if(spyDetected)
+            {
+                System.out.println("YES");
+            }
+            else
+            {
+                System.out.println("NO");
+            }
 
 
         }
@@ -58,11 +76,29 @@ class Wall
 
     public Wall(int startX, int startY, int endX, int endY)
     {
-        this.startX = startX;
-        this.startY = startY;
-        this.endX = endX;
-        this.endY = endY;
-        slope = (startY - endY) / (startX - endX);
+        if(startX < endX)
+        {
+            this.startX = startX;
+            this.startY = startY;
+            this.endX = endX;
+            this.endY = endY;
+        }
+        else
+        {
+            this.startX = endX;
+            this.startY = endY;
+            this.endX = startX;
+            this.endY = startY;
+        }
+        System.out.println("StartX : " + startX + " EndX: " + endX);
+        try
+        {
+            slope = (startY - endY) / (startX - endX);
+        }
+        catch (Exception e)
+        {
+            slope = (startY - endY);
+        }
         c = startY - (slope * startX);
     }
 

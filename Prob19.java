@@ -54,7 +54,7 @@ public class Prob19
                 int lastLow = 10000000;
                 for(int q = 0; q < addresses.size() - 1; q++)
                 {
-                    String bin1 = Integer.toBinaryString(Integer.parseInt(addresses.get(q).substring(packetNum * , (packetNum + 1)*8)));
+                    String bin1 = Integer.toBinaryString(Integer.parseInt(addresses.get(q).substring(packetNum *4) , (packetNum + 1)*8));
                     String bin2 = Integer.toBinaryString(Integer.parseInt(addresses.get(q+1).substring(packetNum * 8, (packetNum + 1) * 8)));
 
                     for(int l = 0; l < bin1.length(); l++)
