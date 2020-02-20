@@ -97,7 +97,7 @@ class Wall
         }
         catch (Exception e)
         {
-            slope = (startY - endY);
+            slope = 0;
         }
         c = startY - (slope * startX);
     }
